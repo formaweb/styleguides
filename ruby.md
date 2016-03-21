@@ -72,7 +72,7 @@ kind = case year
 
 ## Documentation
 
-Use (TomDoc)[http://tomdoc.org/] to the best of your ability. It's pretty sweet:
+Use [TomDoc](http://tomdoc.org/) to the best of your ability. It's pretty sweet:
 
 ```ruby
 # Public: Duplicate some text an arbitrary number of times.
@@ -341,7 +341,7 @@ Refactoring is even better. It's worth looking hard at any code that explicitly 
 
 - The names of predicate methods (methods that return a boolean value) should end in a question mark. (i.e. `Array#empty?`).
 
-- The names of potentially "dangerous" methods (i.e. methods that modify `self` or the arguments, `exit!`, etc.) should end with an exclamation mark. Bang methods should only exist if a non-bang method exists. ((More on this)[http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist]).
+- The names of potentially "dangerous" methods (i.e. methods that modify `self` or the arguments, `exit!`, etc.) should end with an exclamation mark. Bang methods should only exist if a non-bang method exists. ([More on this](http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist)).
 
 ## Classes
 
@@ -640,7 +640,7 @@ user = {
 
 ## Keyword Arguments
 
-(Keyword arguments)[http://magazine.rubyist.net/?Ruby200SpecialEn-kwarg] are recommended but not required when a method's arguments may otherwise be opaque or non-obvious when called. Additionally, prefer them over the old "Hash as pseudo-named args" style from pre-2.0 ruby.
+[Keyword arguments](http://magazine.rubyist.net/?Ruby200SpecialEn-kwarg) are recommended but not required when a method's arguments may otherwise be opaque or non-obvious when called. Additionally, prefer them over the old "Hash as pseudo-named args" style from pre-2.0 ruby.
 
 So instead of this:
 
