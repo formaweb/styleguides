@@ -57,7 +57,7 @@ Utilize o pull-request para enviar suas sugestões.
          end
   ```
 
-- Use linhas vazias entre os `def`s e também para quebrar um os parágrafos lógicos.
+- Use linhas vazias entre os `def`s e também para quebrar os parágrafos lógicos.
 
   ```ruby
     def some_method
@@ -75,8 +75,7 @@ Utilize o pull-request para enviar suas sugestões.
 
 ## Documentação
 
-Use o estilo [TomDoc](http://tomdoc.org/) sempre julgar necessário. Fica bonitinho, olha:
-Sempre em inglês, por favor! ;)
+Use o estilo [TomDoc](http://tomdoc.org/) sempre que julgar necessário. Sempre em inglês, por favor! ;)
 
 ```ruby
 # Public: Duplicate some text an arbitrary number of times.
@@ -109,7 +108,7 @@ Utilize comentários para marcar pendências no código. Neste caso o idioma nat
 
 ## Requerimentos
 
-Sempre faça seus `require`s que serão usados diretamente no script no início do próprio arquivo. Recursos que vão ser auto-carregados no primeiro uso, como grades models, controllers ou helpers não precisam ser carregados.
+Sempre faça seus `require`s que serão usados diretamente no script no início do próprio arquivo. Recursos que vão ser auto-carregados no primeiro uso, como models, controllers ou helpers não precisam ser carregados.
 
 ```ruby
 require 'set'
