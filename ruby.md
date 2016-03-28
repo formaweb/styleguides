@@ -1,78 +1,81 @@
 # Ruby
 
-Much of this was taken from https://github.com/bbatsov/ruby-style-guide. Please add to this guide if you find any particular patterns or styles that we've adopted internally. Submit a pull request to ask for feedback (if you're an employee).
+Boa parte disso foi inspirado daqui https://github.com/bbatsov/ruby-style-guide. Sinta-se à vontade para sugerir melhorias ao nosso padrão.
+Utilize o pull-request para enviar suas sugestões.
 
-## Coding Style
+## Estilo de codificação
 
-- Use soft-tabs with a two space indent.
-- Keep lines fewer than 80 characters.
-- Never leave trailing whitespace.
-- End each file with a blank newline.
-- Use spaces around operators, after commas, colons and semicolons, around { and before }.
+- Utilize soft-tabs com dois espaços para identação.
+- Mantenha a linha dentro de 80 caracteres.
+- Nunca deixe espaços em branco.
+- Termine cada arquivo com uma linha em branco.
+- Use espaços entre operadores, depois de vírgulas, colunas, semi-colunas, entre { e antes de }.
 
   ```ruby
     sum = 1 + 2
     a, b = 1, 2
-    1 > 2 ? true : false; puts "Hi"
+    1 > 2 ? true : false; puts "Olá =)"
     [1, 2, 3].each { |e| puts e }
   ```
 
-- No spaces after `(`, `[` or before `]`, `)`.
+- Sem espaços depois de `(`, `[` ou antes de `]`, `)`.
 
   ```ruby
   some(arg).other
   [1, 2, 3].length
   ```
 
-- No spaces after `!`.
+- Sem espaços depois de `!`.
 
   ```ruby
   !array.include?(element)
   ```
 
-- Indent `when` as deep as `case`.
+- Identar `when` no mesmo nível do `case`.
 
   ```ruby
   case
-  when song.name == "Misty"
-    puts "Not again!"
-  when song.duration > 120
-    puts "Too long!"
-  when Time.now.hour > 21
-    puts "It's too late"
+  when song.name == "Teorema de Carlão"
+    puts "De novo?"
+  when song.duration > 230
+    puts "Muito grande..."
+  when Time.now.hour > 23
+    puts "Vishe, está tarde..."
   else
     song.play
   end
-  
+
   kind = case year
          when 1850..1889 then "Blues"
          when 1890..1909 then "Ragtime"
          when 1910..1929 then "New Orleans Jazz"
          when 1930..1939 then "Swing"
          when 1940..1950 then "Bebop"
+         when 1990..2000 then "Músicas de Caio"
          else "Jazz"
          end
   ```
 
-- Use empty lines between `def`s and to break up a method into logical paragraphs.
+- Use linhas vazias entre os `def`s e também para quebrar um os parágrafos lógicos.
 
   ```ruby
     def some_method
       data = initialize(options)
-  
+
       data.manipulate!
-  
+
       data.result
     end
-  
+
     def some_method
       result
     end
   ```
 
-## Documentation
+## Documentação
 
-Use [TomDoc](http://tomdoc.org/) to the best of your ability. It's pretty sweet:
+Use o estilo [TomDoc](http://tomdoc.org/) sempre julgar necessário. Fica bonitinho, olha:
+Sempre em inglês, por favor! ;)
 
 ```ruby
 # Public: Duplicate some text an arbitrary number of times.
@@ -91,19 +94,31 @@ def multiplex(text, count)
 end
 ```
 
-## Requires
+## Pendências no código
 
-Always `require` dependencies used directly in a script at the start of the same file. Resources that will get autoloaded on first use—such as Rails models, controllers, or helpers—don't need to be required.
+Utilize comentários para marcar pendências no código. Neste caso o idioma nativo da equipe pode ser utilizado.
+
+```ruby
+# TODO: Ficou faltando um método para retornar o nome do usuário.
+
+# FIXME: Método meaning_of_life deveria estar retornando 42.
+
+# NOTE: Podemos pensar em retornar 23 casualmente no método meaning_of_life.
+```
+
+## Requerimentos
+
+Sempre faça seus `require`s que serão usados diretamente no script no início do próprio arquivo. Recursos que vão ser auto-carregados no primeiro uso, como grades models, controllers ou helpers não precisam ser carregados.
 
 ```ruby
 require "set"
 require "time"
 
 %w(foo bar).to_set
-Time.parse("2015-10-21")
+Time.parse("2009-03-13")
 ```
 
-This not only loads the necessary dependencies if they haven't already, but acts as documentation about the libraries that the current file uses.
+Isto não só carrega as dependências necessárias, se já não o fez, mas age como a documentação sobre as bibliotecas que o arquivo atual usa.
 
 ## Syntax
 
@@ -113,7 +128,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
      def some_method
        # body omitted
      end
-  
+
      def some_method_with_arguments(arg1, arg2)
        # body omitted
      end
@@ -123,12 +138,12 @@ This not only loads the necessary dependencies if they haven't already, but acts
 
   ```ruby
     arr = [1, 2, 3]
-  
+
     # bad
     for elem in arr do
       puts elem
     end
-  
+
     # good
     arr.each { |elem| puts elem }
   ```
@@ -140,7 +155,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   if some_condition then
     # body omitted
   end
-  
+
   # good
   if some_condition
     # body omitted
@@ -152,7 +167,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   ```ruby
     # bad
     result = if some_condition then something else something_else end
-  
+
     # good
     result = some_condition ? something : something_else
   ```
@@ -162,7 +177,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   ```ruby
     # bad
     some_condition ? (nested_condition ? nested_something : nested_something_else) : something_else
-  
+
     # good
     if some_condition
       nested_condition ? nested_something : nested_something_else
@@ -182,7 +197,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
     if some_condition
       do_something
     end
-  
+
     # good
     do_something if some_condition
   ```
@@ -196,7 +211,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   else
     puts "success"
   end
-  
+
   # good
   if success?
     puts "success"
@@ -212,7 +227,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   if (x > 10)
     # body omitted
   end
-  
+
   # good
   if x > 10
     # body omitted
@@ -223,18 +238,18 @@ This not only loads the necessary dependencies if they haven't already, but acts
 
   ```ruby
     names = ["Bozhidar", "Steve", "Sarah"]
-  
+
     # good
     names.each { |name| puts name }
-  
+
     # bad
     names.each do |name|
       puts name
     end
-  
+
     # good
     names.select { |name| name.start_with?("S") }.map { |name| name.upcase }
-  
+
     # bad
     names.select do |name|
       name.start_with?("S")
@@ -250,7 +265,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   def some_method(some_arr)
     return some_arr.size
   end
-  
+
   # good
   def some_method(some_arr)
     some_arr.size
@@ -264,7 +279,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   def some_method(arg1=:default, arg2=nil, arg3=[])
     # do something...
   end
-  
+
   # good
   def some_method(arg1 = :default, arg2 = nil, arg3 = [])
     # do something...
@@ -278,10 +293,10 @@ This not only loads the necessary dependencies if they haven't already, but acts
   ```ruby
   # bad
   if (v = array.grep(/foo/)) ...
-  
+
   # good
   if v = array.grep(/foo/) ...
-  
+
   # also good - has correct precedence.
   if (v = next_value) == "hello" ...
   ```
@@ -298,7 +313,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   ```ruby
     # bad - would set enabled to true even if it was false
     enabled ||= true
-  
+
     # good
     enabled = true if enabled.nil?
   ```
@@ -310,7 +325,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   ```ruby
   # bad
   f (3 + 2) + 1
-  
+
   # good
   f(3 + 2) + 1
   ```
@@ -322,7 +337,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   ```ruby
   # bad
   result = hash.map { |k, v| v + 1 }
-  
+
   # good
   result = hash.map { |_, v| v + 1 }
   ```
@@ -350,16 +365,16 @@ This not only loads the necessary dependencies if they haven't already, but acts
   ```ruby
   class Parent
     @@class_var = "parent"
-  
+
     def self.print_class_var
       puts @@class_var
     end
   end
-  
+
   class Child < Parent
     @@class_var = "child"
   end
-  
+
   Parent.print_class_var # => will print "child"
   ```
 
@@ -373,7 +388,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
       def TestClass.some_method
         # body omitted
       end
-  
+
       # good
       def self.some_other_method
         # body omitted
@@ -389,22 +404,22 @@ This not only loads the necessary dependencies if they haven't already, but acts
         def first_method
           # body omitted
         end
-  
+
         def second_method_etc
           # body omitted
         end
       end
-  
+
       # good
       class << self
         attr_accessor :per_page
         alias_method :nwo, :find_by_name_with_owner
       end
-  
+
       def self.first_method
         # body omitted
       end
-  
+
       def self.second_method_etc
         # body omitted
       end
@@ -418,7 +433,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
       def public_method
         # ...
       end
-  
+
       private
       def private_method
         # ...
@@ -431,7 +446,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   ```ruby
     class SomeClass
       attr_accessor :message
-  
+
       def greeting(name)
         message = "Hi #{name}" # local variable in Ruby, not attribute writer
         self.message = message
@@ -450,7 +465,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   rescue ZeroDivisionError
     puts "Cannot divide by 0!"
   end
-  
+
   # good
   if d.zero?
     puts "Cannot divide by 0!"
@@ -468,7 +483,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   rescue
     # exception handling
   end
-  
+
   # still bad
   begin
     # an exception occurs here
@@ -484,7 +499,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   ```ruby
   # bad
   STATES = ["draft", "open", "closed"]
-  
+
   # good
   STATES = %w(draft open closed)
   ```
@@ -496,7 +511,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   ```ruby
   # bad
   hash = { "one" => 1, "two" => 2, "three" => 3 }
-  
+
   # good
   hash = { :one => 1, :two => 2, :three => 3 }
   ```
@@ -508,7 +523,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   ```ruby
   # bad
   email_with_name = user.name + " <" + user.email + ">"
-  
+
   # good
   email_with_name = "#{user.name} <#{user.email}>"
   ```
@@ -518,7 +533,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
   ```ruby
     # bad
     name = 'Bozhidar'
-  
+
     # good
     name = "Bozhidar"
   ```
@@ -529,7 +544,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
     # good and also fast
     html = ""
     html << "<h1>Page title</h1>"
-  
+
     paragraphs.each do |paragraph|
       html << "<p>#{paragraph}</p>"
     end
@@ -544,7 +559,7 @@ This not only loads the necessary dependencies if they haven't already, but acts
     /(regexp)/ =~ string
     ...
     process $1
-  
+
     # good
     /(?<meaningful_var>regexp)/ =~ string
     ...
@@ -664,4 +679,3 @@ remove_member user, skip_membership_check: true
 ## E o restante?
 
 Siga o seu :heart:.
-
