@@ -1,12 +1,13 @@
 # Ruby
 
-Boa parte disso foi inspirado daqui https://github.com/bbatsov/ruby-style-guide. Sinta-se à vontade para sugerir melhorias ao nosso padrão.
+Boa parte foi inspirado daqui https://github.com/bbatsov/ruby-style-guide. Sinta-se à vontade para sugerir melhorias ao nosso padrão.
 Utilize o pull-request para enviar suas sugestões.
 
 ## Estilo de codificação
 
 - Utilize soft-tabs com dois espaços para identação.
-- Mantenha a linha dentro de 80 caracteres.
+- Procure manter a linha dentro de 80 caracteres.
+- Qualquer nomenclatura e o código como um todo deve estar em Inglês americano.
 - Nunca deixe espaços em branco.
 - Termine cada arquivo com uma linha em branco.
 - Use espaços entre operadores, depois de vírgulas, colunas, semi-colunas, entre { e antes de }.
@@ -35,24 +36,24 @@ Utilize o pull-request para enviar suas sugestões.
 
   ```ruby
   case
-  when song.name == "Teorema de Carlão"
-    puts "De novo?"
+  when song.name == 'Teorema de Carlão'
+    puts 'De novo?'
   when song.duration > 230
-    puts "Muito grande..."
+    puts 'Muito grande...'
   when Time.now.hour > 23
-    puts "Vishe, está tarde..."
+    puts 'Vishe, está tarde...'
   else
     song.play
   end
 
   kind = case year
-         when 1850..1889 then "Blues"
-         when 1890..1909 then "Ragtime"
-         when 1910..1929 then "New Orleans Jazz"
-         when 1930..1939 then "Swing"
-         when 1940..1950 then "Bebop"
-         when 1990..2000 then "Músicas de Caio"
-         else "Jazz"
+         when 1850..1889 then 'Blues'
+         when 1890..1909 then 'Ragtime'
+         when 1910..1929 then 'New Orleans Jazz'
+         when 1930..1939 then 'Swing'
+         when 1940..1950 then 'Bebop'
+         when 1990..2000 then 'Músicas de Caio'
+         else 'Jazz'
          end
   ```
 
@@ -85,8 +86,8 @@ Sempre em inglês, por favor! ;)
 #
 # Examples
 #
-#   multiplex("Tom", 4)
-#   # => "TomTomTomTom"
+#   multiplex('Tom', 4)
+#   # => 'TomTomTomTom'
 #
 # Returns the duplicated String.
 def multiplex(text, count)
@@ -111,11 +112,11 @@ Utilize comentários para marcar pendências no código. Neste caso o idioma nat
 Sempre faça seus `require`s que serão usados diretamente no script no início do próprio arquivo. Recursos que vão ser auto-carregados no primeiro uso, como grades models, controllers ou helpers não precisam ser carregados.
 
 ```ruby
-require "set"
-require "time"
+require 'set'
+require 'time'
 
 %w(foo bar).to_set
-Time.parse("2009-03-13")
+Time.parse('2009-03-13')
 ```
 
 Isto não só carrega as dependências necessárias, se já não o fez, mas age como a documentação sobre as bibliotecas que o arquivo atual usa.
