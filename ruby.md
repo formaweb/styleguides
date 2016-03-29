@@ -120,7 +120,7 @@ Time.parse('2009-03-13')
 
 Isto não só carrega as dependências necessárias, se já não o fez, mas age como a documentação sobre as bibliotecas que o arquivo atual usa.
 
-## Syntax
+## Sintaxe
 
 - Use `def` with parentheses when there are arguments. Omit the parentheses when the method doesn't accept any arguments.
 
@@ -346,7 +346,7 @@ Isto não só carrega as dependências necessárias, se já não o fez, mas age 
 
   Refactoring is even better. It's worth looking hard at any code that explicitly checks types.
 
-## Naming
+## Nomenclatura
 
 - Use `nake_case` for methods and variables.
 
@@ -395,7 +395,7 @@ Isto não só carrega as dependências necessárias, se já não o fez, mas age 
       end
   ```
 
-- Avoid `class << self` except when necessary, e.g. single accessors and aliased attributes.
+- Evite `class << self` exceto quando necessário, por exemplo,  acessores individuais e atributos pseudônimos.
 
   ```ruby
     class TestClass
@@ -426,7 +426,7 @@ Isto não só carrega as dependências necessárias, se já não o fez, mas age 
     end
   ```
 
-- Indent the `public`, `protected`, and `private` methods as much the method definitions they apply to. Leave one blank line above them.
+- Idente os métodos `public`, `protected`, e `private` aninhados as definições de métodos que eles se aplicam. Deixe uma linha branca acima.
 
   ```ruby
     class SomeClass
@@ -441,7 +441,7 @@ Isto não só carrega as dependências necessárias, se já não o fez, mas age 
     end
   ```
 
-- Avoid explicit use of `self` as the recipient of internal class or instance messages unless to specify a method shadowed by a variable.
+- Evite a utilização explicita do `self` como destintário das mensagens internas da classe ou instância, a não ser para especificar um método sombreado por uma variável.
 
   ```ruby
     class SomeClass
@@ -454,9 +454,9 @@ Isto não só carrega as dependências necessárias, se já não o fez, mas age 
     end
   ```
 
-## Exceptions
+## Exceções
 
-- Don't use exceptions for flow of control.
+- Não utilize exceções para controle de fluxo.
 
   ```ruby
   # bad
@@ -492,9 +492,9 @@ Isto não só carrega as dependências necessárias, se já não o fez, mas age 
   end
   ```
 
-## Collections
+## Coleções
 
-- Prefer `%w` to the literal array syntax when you need an array of strings.
+- Prefira `%w` para a sintaxe de arrays literais quando você precisar de um array de strings.
 
   ```ruby
   # bad
@@ -506,7 +506,7 @@ Isto não só carrega as dependências necessárias, se já não o fez, mas age 
 
 - Use `Set` instead of `Array` when dealing with unique elements. `Set` implements a collection of unordered values with no duplicates. This is a hybrid of `Array`'s intuitive inter-operation facilities and `Hash`'s fast lookup.
 
-- Use symbols instead of strings as hash keys.
+- Utilize símbolos ao invés de strings como chaves hash.
 
   ```ruby
   # bad
@@ -550,7 +550,7 @@ Isto não só carrega as dependências necessárias, se já não o fez, mas age 
     end
   ```
 
-## Regular Expressions
+## Expressões Regulares
 
 - Avoid using $1-9 as it can be hard to track what they contain. Named groups can be used instead.
 
@@ -588,64 +588,64 @@ Isto não só carrega as dependências necessárias, se já não o fez, mas age 
 
 ## Percent Literals
 
-Use `%w` freely.
+Utilize `%w` livremente.
 
 ```ruby
-STATES = %w(draft open closed)
+ESTADOS = %w(rascunho aberto fechado)
 ```
 
-Use `%()` for single-line strings which require both interpolation and embedded double-quotes. For multi-line strings, prefer heredocs.
+Utilize `%()` para linhas strings de linha única as quais exigem tanto interpolação quanto incorporação de aspas. Para mais de uma linha, utilize heredocs.
 
 ```ruby
-  # bad (no interpolation needed)
-  %(<div class="text">Some text</div>)
-  # should be "<div class=\"text\">Some text</div>"
+  # errado (sem necessidade de interpolação)
+  %(<div class="text">Um texto</div>)
+  # deveria ser "<div class=\"text\">Um texto</div>"
 
-  # bad (no double-quotes)
-  %(This is #{quality} style)
-  # should be "This is #{quality} style"
+  # errado (sem aspas duplas)
+  %(Esse é um estilo de #{qualidade} extrema)
+  # deveria ser "Esse é um estilo de #{qualidade} extrema"
 
-  # bad (multiple lines)
-  %(<div>\n<span class="big">#{exclamation}</span>\n</div>)
-  # should be a heredoc.
+  # errado (múltiplas linhas)
+  %(<div>\n<span class="big">#{exclamacao}</span>\n</div>)
+  # deveria ser um heredoc.
 
-  # good (requires interpolation, has quotes, single line)
-  %(<tr><td class="name">#{name}</td>)
+  # recomendado (requer interpolação, tem aspas, linha simples)
+  %(<tr><td class="name">#{nome}</td>)
 ```
 
-Use `%r` only for regular expressions matching more than one '/' character.
+Utilize `%r` apenas para expressões regulares correspondentes apenas para mais de um caractere '/'.
 
 ```ruby
-# bad
+# errado
 %r(\s+)
 
-# still bad
+# continua errado
 %r(^/(.*)$)
 # should be /^\/(.*)$/
 
-# good
+# recomendado
 %r(^/blog/2011/(.*)$)
 ```
 
 ## Hashes
 
-Use hashrocket syntax for Hash literals instead of the JSON style introduced in 1.9.
+Use a sintaxe "hashrocket" para Hash literais ao invés do estilo JSON introduzido no 1.9.
 
 ```ruby
-# bad
+# errado
 user = {
   login: "defunkt",
   name: "Chris Wanstrath"
 }
 
-# bad
+# errado
 user = {
   login: "defunkt",
   name: "Chris Wanstrath",
   "followers-count" => 52390235
 }
 
-# good
+# recomendado
 user = {
   :login => "defunkt",
   :name => "Chris Wanstrath",
@@ -653,26 +653,29 @@ user = {
 }
 ```
 
-## Keyword Arguments
+## Argumentos de Palavras-chave
 
-[Keyword arguments](http://magazine.rubyist.net/?Ruby200SpecialEn-kwarg) are recommended but not required when a method's arguments may otherwise be opaque or non-obvious when called. Additionally, prefer them over the old "Hash as pseudo-named args" style from pre-2.0 ruby.
+[Argumentos de palavras-chave](http://magazine.rubyist.net/?Ruby200SpecialEn-kwarg) são recomendados mas não obrigatórios quando um argumento de um método podem de outra forma serem opacos ou não-óbvios quando chamados. Adicionalmente, opte por eles ao invés do antigo estio "Hash como argumento de pseudo-nome" do Ruby pre-2.0.
 
-So instead of this:
+Então, ao invés disso:
 
 ```ruby
 def remove_member(user, skip_membership_check=false)
   # ...
 end
 
-# Elsewhere: what does true mean here?
+# Em outro lugar: o que significa verdadeiro aqui?
 remove_member(user, true)
-Do this, which is much clearer.
+```
 
+Faça isso, o que deixa muito mais claro.
+
+```ruby
 def remove_member(user, skip_membership_check: false)
   # ...
 end
 
-# Elsewhere, now with more clarity:
+# Em outro lugar, agora mais claro:
 remove_member user, skip_membership_check: true
 ```
 
